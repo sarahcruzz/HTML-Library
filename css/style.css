@@ -1,0 +1,83 @@
+/* Estilização geral das páginas */
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    box-sizing: border-box;
+}
+
+/* Estilização do header (barra de navegação) */
+header{
+    background-color: #4AA0EF;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    align-items: center;
+    padding: 10px 20px 10px 20px;
+    font-size: 24px;
+}
+
+.logo img{
+    display: flex;
+    height: 60px;
+}
+
+.conjunto1{
+    display: flex;
+    align-items: center;
+    gap: 100px;
+}
+
+.conjunto2{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 120px;
+}
+
+.barra-pesquisa input{
+    display: flex;
+    width: 350px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.icones{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+/* Estilização do Main (corpo do site) */
+main{
+    display: flex;
+    justify-content: center;
+    padding: 35px;
+}
+
+.slide{
+    background-color: #dfdfdf;
+    width: 1350px;
+    height: 300px;
+}
+
+.livros-home{
+    display: flex;
+    justify-content: space-around;
+}
+
+.livros{
+    width: 50px;
+    height: 80px;
+    background-color: #dfdfdf;
+}
+
+
