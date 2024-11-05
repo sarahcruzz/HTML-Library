@@ -164,28 +164,43 @@ section{
     font-size: 20px;
 }
 
+.dados-login a{
+    text-decoration: none;
+    color: #000;
+    display: flex;
+}
+
 .input-login {
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    max-width: 300px;
-    margin-bottom: 1rem;
+    justify-content: space-between;
+    gap: 50px;
 }
 
 .input-login input {
     width: 100%;
-    padding: 0.75rem;
-    margin: 0.5rem 0;
-    border: 1px solid #ccc;
+    padding: 1rem;
+    border: none;
     border-radius: 5px;
     font-size: 1rem;
-    background-color: #f2f2f2;
+    background-color: #d9d9d9;
 }
 
 .input-login input::placeholder {
-    color: #aaa;
+    color: #00000042;
+    padding-left: 50px;
 }
 
 button{
     margin-top: 6rem;
+    background-color: #4AA0EF;
+    border: none;
+    border-radius: 50px;
+    padding: 15px 50px 15px 50px;
+    font-size: 15px;
+    width: 200px;
+    color: #ffff;
 }
 
 
