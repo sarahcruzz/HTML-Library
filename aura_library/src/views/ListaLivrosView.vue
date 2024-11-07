@@ -1,39 +1,12 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="./css/style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/be07557a2e.js" crossorigin="anonymous"></script>
-    <title>Aura Library</title>
-</head>
-<body>
-    <header>
-        <nav>
-            <div class="conjunto1">
-                <i class="fa-solid fa-bars"></i>
+<script setup>
 
-                <div class="logo">
-                    <a href="index.html"><img src="./img/logo_aura.png" alt="Logo Aura Library"></a>
-                </div>
-            </div>
+import DefaultLayout from '@/layouts/DefaultLayout.vue';
 
-            <div class="conjunto2">
-                <div class="barra-pesquisa">
-                    <input type="search" class="pesquisa" placeholder="O que está procurando hoje?">
-                </div>
-    
-                <div class="icones">
-                    <i class="fa-regular fa-heart"></i>
-                    <i class="fa-solid fa-basket-shopping"></i>
-                    <i class="fa-regular fa-circle-user"></i>
-                </div>
-            </div>
-            
-        </nav>
-    </header>
+</script>
 
-    <main>
+<template>
+    <DefaultLayout>
+        <main>
         <div class="filtro-titulo">
             <h1>Livros</h1>
             <select name="genero" id="genero" >
@@ -108,6 +81,9 @@
         </div>
 
     </main>
+    </DefaultLayout>
+</template>
 
-</body>
-</html>
+<style>
+
+</style>

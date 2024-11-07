@@ -110,7 +110,7 @@ main{
 
 #genero{
     padding: 10px;  
-}
+}   
 
 .filtro-titulo{
     display: flex;
@@ -191,6 +191,8 @@ section{
     color: #00000042;
     padding-left: 50px;
 }
+
+
 
 button{
     margin-top: 6rem;
