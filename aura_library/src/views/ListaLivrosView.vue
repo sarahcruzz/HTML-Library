@@ -47,9 +47,24 @@ import DefaultLayout from '@/layouts/DefaultLayout.vue';
                 <p>Livro</p>
             </div>
 
+            <div class="conj-livro">
+                <div class="livro">
+
+                </div>
+                <p>Livro</p>
+            </div>
+
         </div>
 
         <div class="livros-home">
+
+            <div class="conj-livro">
+                <div class="livro">
+
+                </div>
+                <p>Livro</p>
+            </div>
+
             <div class="conj-livro">
                 <div class="livro">
 

@@ -6,6 +6,8 @@ import HomeView from '@/views/HomeView.vue'
 import ListaLivrosView from '@/views/ListaLivrosView.vue'
 import LoginView from '@/views/LoginView.vue'
 import LivroInfoView from '@/views/LivroInfoView.vue'
+import ListaFavoritosView from '@/views/ListaFavoritosView.vue'
+import VerEmprestimoView from '@/views/VerEmprestimoView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -18,9 +20,6 @@ const router = createRouter({
     {
       path: '/lista-livros',
       name: 'lista de livros',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: ListaLivrosView
     
     },
@@ -38,6 +37,16 @@ const router = createRouter({
       path: '/livro',
       name: 'livro único',
       component: LivroInfoView
+    },
+    {
+      path: '/favoritos',
+      name: 'lista de favoritados',
+      component: ListaFavoritosView
+    },
+    {
+      path: '/emprestimo',
+      name: 'ver os empréstimos',
+      component: VerEmprestimoView
     }
   ],
 })

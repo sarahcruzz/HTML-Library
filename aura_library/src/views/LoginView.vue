@@ -151,6 +151,7 @@ section{
     font-size: 15px;
     width: 200px;
     color: #ffff;
+    cursor: pointer;
 }
 
 #btn-login{
@@ -161,6 +162,7 @@ section{
     width: 200px;
     color: #ffff;
     text-decoration: none;
+    cursor: pointer;
 }
 
 </style>

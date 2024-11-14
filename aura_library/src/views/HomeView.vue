@@ -1,6 +1,6 @@
 <script setup>
 
-import DefaultLayout from '@/layouts/DefaultLayout.vue';
+    import DefaultLayout from '@/layouts/DefaultLayout.vue';
 
 </script>
 
@@ -12,6 +12,13 @@ import DefaultLayout from '@/layouts/DefaultLayout.vue';
         </div>
 
         <div class="livros-home">
+            <div class="conj-livro">
+                <div class="livro">
+
+                </div>
+                <p>Livro</p>
+            </div>
+
             <div class="conj-livro">
                 <div class="livro">
 
