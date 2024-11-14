@@ -37,7 +37,7 @@ import LoginLayout from '@/layouts/LoginLayout.vue';
                 </div>
             </div>
 
-            <span class="esqueci-cadastro"><RouterLink to="/cadastro">Cadastre-se</RouterLink><RouterLink to="/esqueci-senha">Esqueci minha senha</RouterLink></span>
+            <span class="esqueci-cadastro"><RouterLink to="/cadastro">Cadastre-se</RouterLink></span>
 
             <button type="submit" class="btn-login-cadastro"> ENTRAR </button>
 
@@ -142,11 +142,6 @@ section{
     color: #00000042;
 }
 
-.esqueci-cadastro{
-    display: flex;
-    justify-content: space-between;
-    width: 80%;
-}
 
 .btn-login-cadastro{
     background-color: #4AA0EF;

@@ -30,6 +30,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.vue';
                 </span>
 
                 <span class="descricao-livro">
+                    <h3>Descrição</h3>
                     <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident odit unde quod repellendus inventore deserunt, animi laudantium optio fugit ipsam aperiam repudiandae voluptas? Beatae quaerat debitis culpa praesentium impedit ullam. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam maxime unde neque aperiam! Voluptatibus harum ad atque quisquam itaque deleniti natus hic? Consequatur, voluptate voluptas vero deleniti dolor iure ut."</p>
                 </span>
 
@@ -39,8 +40,11 @@ import DefaultLayout from '@/layouts/DefaultLayout.vue';
                         <button type="submit">Emprestar</button>
                     </div>
                     
-
-                    <button type="submit">Favoritar</button>
+                    <div class="btn-eptmo-fav">
+                        <i class="pi pi-heart"></i>
+                        <button type="submit">Favoritar</button>
+                    </div>
+                    
                 </div>
 
 
@@ -58,22 +62,58 @@ import DefaultLayout from '@/layouts/DefaultLayout.vue';
 
 .conj-livro-unico{
     display: flex;
-    padding: 30px;
+    padding: 40px;
+    justify-content: center;
+    gap: 120px;
 }
 
 .conj-livro-unico img{
-    height: 500px;
+    height: 600px;
+    box-shadow: 5px 5px 7px #bcbcbc;
 }
 
 .genero-estrelas{
+    margin-top: 30px;
     display: flex;
     justify-content: space-between;
 }
 
 .info-detalhada{
+    margin-top: 30px;
     display: flex;
     width: 100%;
-    justify-content: space-around;
+    justify-content: space-between;
     gap: 80px;
 }
+
+.descricao-livro h3{
+    margin-top: 40px;
+}
+
+.emprestar-favoritar{
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn-eptmo-fav i{
+    color: rgb(255, 255, 255);   
+    position: absolute;
+    padding: 20px;
+}
+
+.btn-eptmo-fav button{
+    width: 240px;    
+    padding: 15px;
+    border: none;
+    background-color: #4AA0EF;
+    font-size: 16px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    
+}
+
+
+
 </style>
