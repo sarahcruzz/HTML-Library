@@ -45,6 +45,9 @@
             </div>
 
             <div class="conjunto2">
+                <RouterLink to="/status">Status</RouterLink>
+                <RouterLink to="/verLivros">Ver Livros</RouterLink>
+                
                 <div class="barra-pesquisa">
                     <input type="search" class="pesquisa" placeholder="O que está procurando hoje?">
                 </div>
@@ -89,7 +92,7 @@ transition: transform 0.3s ease, opacity 0.3s ease;
 
 /* Animação do botão ao abrir */
 .hamburger span.open:nth-child(1) {
-transform: translateY(8px) rotate(45deg);
+transform: translateY(8px) rotate(45.deg);
 }
 
 .hamburger span.open:nth-child(2) {

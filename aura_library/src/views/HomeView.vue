@@ -40,12 +40,7 @@
                 <p>Livro</p>
             </div>
 
-            <div class="conj-livro">
-                <div class="livro">
-
-                </div>
-                <p>Livro</p>
-            </div>
+           
 
         </div>
 
@@ -60,15 +55,15 @@
 <style>
 main{
     display: flex;
-    justify-content: center;
-    padding: 60px;
-    display: block;
+    padding: 40px 180px 80px 180px;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .slide{
     background-color: #dfdfdf;
     width: 100%;
-    height: 300px;
+    height: 320px;
     border-radius: 10px;
 }
 
