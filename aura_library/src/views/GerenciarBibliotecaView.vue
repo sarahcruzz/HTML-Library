@@ -55,6 +55,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.vue';
 }
 
 .tabela {
+    margin-top: 50px;
     display: flex;
     justify-content: center;
 }
@@ -71,8 +72,15 @@ td {
 }
 
 .user-livro {
+    margin-top: 40px;
     display: flex;
     justify-content: space-around;
+}
+
+.user-livro a.router-link-exact-active {
+    border-bottom: 2px solid #c6d4e1;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
 }
 
 .user-livro a {
@@ -80,9 +88,6 @@ td {
     color: #000;
 }
 
-.user-livro a.router-link-exact-active {
-    border-bottom: 2px solid blue;
-    color: blue;
-    font-weight: bold;
-}
+
+
 </style>

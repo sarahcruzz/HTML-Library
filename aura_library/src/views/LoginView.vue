@@ -57,7 +57,7 @@ section{
 }
 
 .conj-login {
-    background-color: #4AA0EF;
+    background-color: #44749d;
     color: white;
     display: flex;
     flex-direction: column;
@@ -144,7 +144,7 @@ section{
 
 
 .btn-login-cadastro{
-    background-color: #4AA0EF;
+    background-color: #44749d;
     border: none;
     border-radius: 50px;
     padding: 15px 50px 15px 50px;

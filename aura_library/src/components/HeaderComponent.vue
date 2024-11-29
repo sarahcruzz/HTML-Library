@@ -13,13 +13,14 @@
                 <RouterLink to="/gerenciarBiblioteca">Gerenciar Biblioteca</RouterLink>
                 <RouterLink to="/status">Status Empréstimo</RouterLink>
                 <RouterLink to="/lista-livros">Ver Livros</RouterLink>
-                
+            </div>
+
+            <div class="conjunto2">              
                 <div class="barra-pesquisa">
                     <input type="search" class="pesquisa" placeholder="O que está procurando hoje?">
                 </div>
     
                 <div class="icones">
-                    <RouterLink to="/favoritos"><i class="pi pi-heart"></i></RouterLink>
                     <RouterLink to="/emprestimo"><i class="pi pi-shopping-bag"></i></RouterLink>
                     <RouterLink to="/login"><i class="pi pi-user"></i></RouterLink>
                 </div>
@@ -32,7 +33,7 @@
 <style>
 
 header{
-    background-color: #4AA0EF;
+    background-color: #44749d;
 }
 
 nav{
@@ -40,7 +41,7 @@ nav{
     justify-content: space-between;
     color: white;
     align-items: center;
-    padding: 10px 20px 10px 20px;
+    padding: 10px 50px;
     font-size: 24px;
 }
 
@@ -86,6 +87,7 @@ nav{
 
 .icones i{
     color: #fff;
+    font-size: 20px;
 }
 
 

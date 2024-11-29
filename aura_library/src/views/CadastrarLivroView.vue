@@ -6,45 +6,50 @@ import DefaultLayout from '@/layouts/DefaultLayout.vue';
 
 <template>
     <DefaultLayout>
-        <div class="form-container">
+    <div class="form-container">
         <h1>Cadastro de Livro</h1>
-        <form action="#" method="post" enctype="multipart/form-data">
+        <form action="#">
             <div class="form-group">
-                <label for="titulo">Título</label>
-                <input type="text" id="titulo" name="titulo" required>
+
+                <div class="lab-input">
+                    <label for="titulo">Título</label>
+                    <input type="text" id="titulo" name="titulo" required>
+                </div>
+
+                <div class="lab-input">
+                    <label for="isbn">ISBN</label>
+                    <input type="text" id="isbn" name="isbn" required>
+                </div>
+
+                <div class="lab-input">
+                    <label for="genero">Gênero</label>
+                    <input type="text" id="genero" name="genero" required>
+                </div>
             </div>
             <div class="form-group">
-                <label for="isbn">ISBN</label>
-                <input type="text" id="isbn" name="isbn" required>
+
+                <div class="lab-input">
+                    <label for="imagem">Imagem do Livro</label>
+                    <input type="file" id="imagem" name="imagem" accept="image/*" required>
+                </div>
+
+                <div class="lab-input">
+                    <label for="autor">Autor</label>
+                    <input type="text" id="autor" name="autor" required>
+                </div>
+
+                <div class="lab-input">
+                    <label for="ano">Ano de Publicação</label>
+                    <input type="number" id="ano" name="ano" min="1000" max="9999" required>
+                </div>
+
             </div>
-            <div class="form-group">
-                <label for="genero">Gênero</label>
-                <select id="genero" name="genero" required>
-                    <option value="">Selecione o gênero</option>
-                    <option value="ficcao">Ficção</option>
-                    <option value="nao-ficcao">Não Ficção</option>
-                    <option value="romance">Romance</option>
-                    <option value="fantasia">Fantasia</option>
-                    <option value="biografia">Biografia</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="imagem">Imagem do Livro</label>
-                <input type="file" id="imagem" name="imagem" accept="image/*" required>
-            </div>
-            <div class="form-group">
-                <label for="autor">Autor</label>
-                <input type="text" id="autor" name="autor" required>
-            </div>
-            <div class="form-group">
-                <label for="ano">Ano de Publicação</label>
-                <input type="number" id="ano" name="ano" min="1000" max="9999" required>
-            </div>
-            <div class="form-group">
-                <label for="descricao">Descrição</label>
-                <textarea id="descricao" name="descricao" required></textarea>
-            </div>
-            <div class="form-group">
+            <div class="form-group1">
+                <div class="lab-input">
+                    <label for="descricao">Descrição</label>
+                    <textarea id="descricao" name="descricao" required></textarea>
+                </div>
+                
                 <button type="submit">Confirmar</button>
             </div>
         </form>
@@ -54,24 +59,51 @@ import DefaultLayout from '@/layouts/DefaultLayout.vue';
 
 <style scoped>
 .form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     background: #fff;
-    padding: 20px;
+    padding: 40px 120px;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 400px;
 }
 .form-container h1 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
     font-size: 24px;
     color: #333;
 }
 .form-group {
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 15px;
 }
+
+.form-group1{
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.form-group1 button{
+    width: 120px;
+    height: 40px;
+    font-size: 15px;
+    border: none;
+    color: #fff;
+    border-radius: 10px;
+    background-color: #12a356;
+    cursor: pointer;
+}
+
+.form-group1 textarea{
+    max-width: 500px;
+    min-width: 500px;
+    max-height: 150px;
+    min-height: 150px;
+} 
+
 .form-group label {
-    display: block;
     margin-bottom: 5px;
     font-weight: bold;
     color: #555;
@@ -79,7 +111,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.vue';
 .form-group input, 
 .form-group select, 
 .form-group textarea {
-    width: 100%;
+    width: 300px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -90,7 +122,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.vue';
     height: 100px;
 }
 .form-group input[type="file"] {
-    padding: 3px;
+    padding: 10px;
 }
 .form-group button {
     width: 100%;
@@ -104,5 +136,10 @@ import DefaultLayout from '@/layouts/DefaultLayout.vue';
 }
 .form-group button:hover {
     background-color: #4cae4c;
+}
+
+.lab-input{
+    display: flex;
+    flex-direction: column;
 }
 </style>

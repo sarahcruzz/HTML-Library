@@ -34,20 +34,11 @@ import DefaultLayout from '@/layouts/DefaultLayout.vue';
                     <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident odit unde quod repellendus inventore deserunt, animi laudantium optio fugit ipsam aperiam repudiandae voluptas? Beatae quaerat debitis culpa praesentium impedit ullam. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam maxime unde neque aperiam! Voluptatibus harum ad atque quisquam itaque deleniti natus hic? Consequatur, voluptate voluptas vero deleniti dolor iure ut."</p>
                 </span>
 
-                <div class="emprestar-favoritar">
-                    <div class="btn-eptmo-fav">
-                        <i class="pi pi-book"></i>
-                        <button type="submit">Emprestar</button>
-                    </div>
-                    
-                    <div class="btn-eptmo-fav">
-                        <i class="pi pi-heart"></i>
-                        <button type="submit">Favoritar</button>
-                    </div>
-                    
+                <div class="emprestar">
+                    <button type="submit">Emprestar</button>
                 </div>
-
-
+                
+    
             </div>
         </div>
     </DefaultLayout>
@@ -90,29 +81,23 @@ import DefaultLayout from '@/layouts/DefaultLayout.vue';
     margin-top: 40px;
 }
 
-.emprestar-favoritar{
-    margin-top: 50px;
-    display: flex;
-    justify-content: space-around;
-}
-
-.btn-eptmo-fav i{
-    color: rgb(255, 255, 255);   
-    position: absolute;
-    padding: 20px;
-}
-
-.btn-eptmo-fav button{
-    width: 240px;    
-    padding: 15px;
+.info-livro button{
+    width: 180px;    
+    padding: 10px;
     border: none;
-    background-color: #4AA0EF;
+    background-color: #44749d;
     font-size: 16px;
-    border-radius: 5px;
+    border-radius: 50px;
     color: white;
     cursor: pointer;
-    
 }
+
+.emprestar{
+    margin-top: 40px;
+    display: flex;
+    justify-content: end;
+}
+
 
 
 

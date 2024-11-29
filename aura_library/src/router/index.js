@@ -9,6 +9,7 @@ import LivroInfoView from '@/views/LivroInfoView.vue'
 import GerenciarBibliotecaView from '@/views/GerenciarBibliotecaView.vue'
 import GerenciarLivrosView from '@/views/GerenciarLivrosView.vue'
 import CadastrarLivroView from '@/views/CadastrarLivroView.vue'
+import StatusEmprestimoView from '@/views/StatusEmprestimoView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -53,6 +54,11 @@ const router = createRouter({
       path: '/cadastrarLivro',
       name: 'cadastrar um novo livro ',
       component: CadastrarLivroView
+    },
+    {
+      path: '/status',
+      name: 'ver status emprestimo ',
+      component: StatusEmprestimoView
     },
 
   

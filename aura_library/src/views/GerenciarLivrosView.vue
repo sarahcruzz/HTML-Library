@@ -46,7 +46,10 @@ import DefaultLayout from '@/layouts/DefaultLayout.vue';
             
         </div>
 
-        <RouterLink to="/cadastrarLivro"><button class="btn-add-livro"> + Adicionar Livro</button></RouterLink>
+        <div class="btn-add-livro">
+            <RouterLink to="/cadastrarLivro"><button type="button"> + Adicionar Livro</button></RouterLink>
+        </div>
+        
     </DefaultLayout>
 </template>
 
@@ -84,8 +87,26 @@ td {
 }
 
 .user-livro a.router-link-exact-active {
-    border-bottom: 2px solid blue;
-    color: blue;
+    border-bottom: 2px solid #c6d4e1;
+    color: rgb(0, 0, 0);
     font-weight: bold;
 }
+
+.btn-add-livro{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-add-livro button{
+    border-radius: 50px;
+    border: none;
+    width: 200px;
+    height: 40px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #4AA0EF;
+    cursor: pointer;
+}
+
 </style>

@@ -1,0 +1,13 @@
+<script setup>
+    import DefaultLayout from '@/layouts/DefaultLayout.vue';
+</script>
+
+<template>
+    <DefaultLayout>
+        
+    </DefaultLayout>
+</template>
+
+<style>
+
+</style>
