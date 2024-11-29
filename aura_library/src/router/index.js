@@ -6,9 +6,9 @@ import HomeView from '@/views/HomeView.vue'
 import ListaLivrosView from '@/views/ListaLivrosView.vue'
 import LoginView from '@/views/LoginView.vue'
 import LivroInfoView from '@/views/LivroInfoView.vue'
-import ListaFavoritosView from '@/views/ListaFavoritosView.vue'
-import VerEmprestimoView from '@/views/VerEmprestimoView.vue'
 import GerenciarBibliotecaView from '@/views/GerenciarBibliotecaView.vue'
+import GerenciarLivrosView from '@/views/GerenciarLivrosView.vue'
+import CadastrarLivroView from '@/views/CadastrarLivroView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,7 +20,7 @@ const router = createRouter({
     },
     {
       path: '/lista-livros',
-      name: 'listaLivros',
+      name: 'pag todos os livros',
       component: ListaLivrosView
     
     },
@@ -36,34 +36,28 @@ const router = createRouter({
     },
     {
       path: '/livro',
-      name: 'livroUnico',
+      name: 'livro selecionado',
       component: LivroInfoView
     },
     {
-      path: '/favoritos',
-      name: 'listaFavoritados',
-      component: ListaFavoritosView
-    },
-    {
-      path: '/emprestimo',
-      name: 'verEmprestimos',
-      component: VerEmprestimoView
-    },
-    {
-      path: '/status',
-      name: 'statusEmprestimo',
-      component: VerEmprestimoView
-    },
-    {
       path: '/gerenciarBiblioteca',
-      name: 'gerenciar',
+      name: 'gerenciar usuarios na biblioteca',
       component: GerenciarBibliotecaView
     },
     {
-      path: '/verLivros',
-      name: 'vertodoslivros',
-      component: VerEmprestimoView
+      path: '/gerenciarLivros',
+      name: 'gerenciar livros ',
+      component: GerenciarLivrosView
     },
+    {
+      path: '/cadastrarLivro',
+      name: 'cadastrar um novo livro ',
+      component: CadastrarLivroView
+    },
+
+  
+    
+    
   ],
 })
 

@@ -12,7 +12,7 @@
             <div class="conjunto2">
                 <RouterLink to="/gerenciarBiblioteca">Gerenciar Biblioteca</RouterLink>
                 <RouterLink to="/status">Status Empréstimo</RouterLink>
-                <RouterLink to="/verLivros">Ver Livros</RouterLink>
+                <RouterLink to="/lista-livros">Ver Livros</RouterLink>
                 
                 <div class="barra-pesquisa">
                     <input type="search" class="pesquisa" placeholder="O que está procurando hoje?">
