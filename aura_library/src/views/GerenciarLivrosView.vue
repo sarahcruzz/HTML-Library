@@ -1,5 +1,40 @@
 <script setup>
+import { ref, onMounted } from 'vue';
+import axios from 'axios';
 import DefaultLayout from '@/layouts/DefaultLayout.vue';
+
+const livros = ref([]);
+
+// Função para buscar os livros da API
+const fetchLivros = async () => {
+    try {
+        const response = await axios.get('http://localhost:3000/api/books'); // URL da sua API
+        livros.value = response.data;
+    } catch (error) {
+        console.error("Erro ao buscar livros:", error);
+    }
+};
+
+// Função para excluir um livro
+const excluirLivro = async (id) => {
+    try {
+        // Fazendo a requisição DELETE
+        await axios.delete(`http://localhost:3000/api/books/${id}`);
+        
+        // Remover o livro da lista de livros localmente após a exclusão
+        livros.value = livros.value.filter(livro => livro._id !== id);
+
+        alert('Livro excluído com sucesso');
+    } catch (error) {
+        console.error("Erro ao excluir livro:", error);
+        alert('Erro ao excluir livro');
+    }
+};
+
+// Chama a função ao montar o componente
+onMounted(() => {
+    fetchLivros();
+});
 </script>
 
 <template>
@@ -23,37 +58,31 @@ import DefaultLayout from '@/layouts/DefaultLayout.vue';
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Livro 1</td>
-                        <td>1984988</td>
-                        <td>Autor 1</td>
-                        <td>Romance</td>
-                        <td>2020</td>
-                        <td><button>Excluir</button></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Livro 2</td>
-                        <td>2628529</td>
-                        <td>Autor 2</td>
-                        <td>Terror</td>
-                        <td>1995</td>
-                        <td><button>Excluir</button></td>
+                    <!-- Renderizando os livros -->
+                    <tr v-for="livro in livros" :key="livro._id">
+                        <td>{{ livro._id }}</td>
+                        <td>{{ livro.titulo }}</td>
+                        <td>{{ livro.isbn }}</td>
+                        <td>{{ livro.autor }}</td>
+                        <td>{{ livro.genero }}</td>
+                        <td>{{ livro.ano }}</td>
+                        <td>
+                            <button @click="excluirLivro(livro._id)">Excluir</button>
+                            <button @click="atualizarLivro(livro._id)">Editar</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
-            
         </div>
 
         <div class="btn-add-livro">
             <RouterLink to="/cadastrarLivro"><button type="button"> + Adicionar Livro</button></RouterLink>
         </div>
-        
     </DefaultLayout>
 </template>
 
 <style>
+/* O estilo permanece igual */
 .btn-atv-dtv {
     display: flex;
     justify-content: center;
@@ -76,6 +105,7 @@ td {
     border: 1px solid #ddd;
 }
 
+
 .user-livro {
     display: flex;
     justify-content: space-around;
@@ -92,13 +122,13 @@ td {
     font-weight: bold;
 }
 
-.btn-add-livro{
+.btn-add-livro {
     margin-top: 50px;
     display: flex;
     justify-content: center;
 }
 
-.btn-add-livro button{
+.btn-add-livro button {
     border-radius: 50px;
     border: none;
     width: 200px;
@@ -108,5 +138,4 @@ td {
     background-color: #4AA0EF;
     cursor: pointer;
 }
-
 </style>

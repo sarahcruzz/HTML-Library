@@ -1,75 +1,88 @@
 <script setup>
-
+import { ref, onMounted } from 'vue';
+import axios from 'axios';
+import { useRoute } from 'vue-router';
 import DefaultLayout from '@/layouts/DefaultLayout.vue';
 
+const livro = ref(null);
+const route = useRoute();
+const livroId = route.params.id;
+
+const fetchLivro = async () => {
+  try {
+    const response = await axios.get(`http://localhost:3000/api/books/${livroId}`);
+    livro.value = response.data;
+  } catch (error) {
+    console.error('Erro ao carregar o livro:', error);
+  }
+};
+
+onMounted(() => {
+  fetchLivro();
+});
 </script>
 
 <template>
     <DefaultLayout>
         <div class="conj-livro-unico">
-            <img src="../assets/livro.jpg" alt="">
+            <!-- A URL da imagem é dinâmica agora -->
+            <img :src="livro?.imagem ? `http://localhost:3000/${livro.imagem}` : ''" alt="Imagem do livro" v-if="livro?.imagem" />
 
             <div class="info-livro">
-                <h1>Lendas Japonesas</h1>
+                <h1>{{ livro?.titulo }}</h1>
 
                 <span class="genero-estrelas">
-                    <p>Gênero: Contos e Fantasia</p>
+                    <p>Gênero: {{ livro?.genero }}</p>
                     <span class="estrelinhas">
-                        <i class="pi pi-star"></i>
-                        <i class="pi pi-star"></i>
-                        <i class="pi pi-star"></i>
-                        <i class="pi pi-star"></i>
-                        <i class="pi pi-star"></i>
+                        <i class="pi pi-star" v-for="n in 5" :key="n" />
                     </span>
                 </span>
 
                 <span class="info-detalhada">
-                    <p>ISBN: 123456789</p>
-                    <p>Publicado em: 2020</p>
-                    <p>Autor: Loputyn</p>
+                    <p>ISBN: {{ livro?.isbn }}</p>
+                    <p>Publicado em: {{ livro?.ano }}</p>
+                    <p>Autor: {{ livro?.autor }}</p>
                 </span>
 
                 <span class="descricao-livro">
                     <h3>Descrição</h3>
-                    <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident odit unde quod repellendus inventore deserunt, animi laudantium optio fugit ipsam aperiam repudiandae voluptas? Beatae quaerat debitis culpa praesentium impedit ullam. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam maxime unde neque aperiam! Voluptatibus harum ad atque quisquam itaque deleniti natus hic? Consequatur, voluptate voluptas vero deleniti dolor iure ut."</p>
+                    <p>{{ livro?.descricao }}</p>
                 </span>
 
                 <div class="emprestar">
                     <button type="submit">Emprestar</button>
                 </div>
-                
-    
             </div>
         </div>
     </DefaultLayout>
-
 </template>
 
 <style scoped>
-
-.info-livro{
+/* Estilos existentes */
+.info-livro {
     width: 50%;
 }
 
-.conj-livro-unico{
+.conj-livro-unico {
     display: flex;
     padding: 40px;
     justify-content: center;
     gap: 120px;
 }
 
-.conj-livro-unico img{
-    height: 600px;
+.conj-livro-unico img {
+    height: 500px;
+    width: 375px;
     box-shadow: 5px 5px 7px #bcbcbc;
 }
 
-.genero-estrelas{
+.genero-estrelas {
     margin-top: 30px;
     display: flex;
     justify-content: space-between;
 }
 
-.info-detalhada{
+.info-detalhada {
     margin-top: 30px;
     display: flex;
     width: 100%;
@@ -77,12 +90,12 @@ import DefaultLayout from '@/layouts/DefaultLayout.vue';
     gap: 80px;
 }
 
-.descricao-livro h3{
+.descricao-livro h3 {
     margin-top: 40px;
 }
 
-.info-livro button{
-    width: 180px;    
+.info-livro button {
+    width: 180px;
     padding: 10px;
     border: none;
     background-color: #44749d;
@@ -92,13 +105,9 @@ import DefaultLayout from '@/layouts/DefaultLayout.vue';
     cursor: pointer;
 }
 
-.emprestar{
+.emprestar {
     margin-top: 40px;
     display: flex;
     justify-content: end;
 }
-
-
-
-
 </style>

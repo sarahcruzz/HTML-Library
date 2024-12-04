@@ -32,11 +32,6 @@
                 </div>
 
                 <div class="conj-input">
-                    <i class="pi pi-envelope"></i>
-                    <input type="email" name="email" id="email" placeholder="Digite um e-mail válido">
-                </div>
-
-                <div class="conj-input">
                     <i class="pi pi-lock"></i>
                     <input type="password" name="password" id="password" placeholder="Digite uma senha segura">
                 </div>

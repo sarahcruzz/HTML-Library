@@ -36,9 +36,10 @@ const router = createRouter({
       component: CadastroView
     },
     {
-      path: '/livro',
-      name: 'livro selecionado',
-      component: LivroInfoView
+      path: '/livro/:id',
+      name: 'livro-detalhe',
+      component: LivroInfoView,
+      props: true,  // Passa o parâmetro :id para o componente
     },
     {
       path: '/gerenciarBiblioteca',

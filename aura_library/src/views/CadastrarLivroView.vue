@@ -1,61 +1,84 @@
 <script setup>
 import DefaultLayout from '@/layouts/DefaultLayout.vue';
+import axios from 'axios';
+import { ref } from 'vue';
 
+const formRef = ref(null);
 
+// Função para enviar o formulário
+const submitForm = async (event) => {
+    event.preventDefault(); // Impede o comportamento padrão do formulário (recarregar a página)
+
+    const formData = new FormData(formRef.value); // Coleta os dados do formulário, incluindo o arquivo de imagem
+
+    try {
+        // Envia os dados para o backend usando POST
+        const response = await axios.post('http://localhost:3000/api/books', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data', // Necessário para enviar arquivos
+            }
+        });
+
+        // Se o cadastro for bem-sucedido, exibe a mensagem
+        alert('Livro cadastrado com sucesso!');
+        console.log(response.data);
+    } catch (error) {
+        // Em caso de erro, exibe a mensagem de erro
+        console.error('Erro ao cadastrar:', error.response?.data?.message || error.message);
+    }
+};
 </script>
 
 <template>
     <DefaultLayout>
-    <div class="form-container">
-        <h1>Cadastro de Livro</h1>
-        <form action="#">
-            <div class="form-group">
+        <div class="form-container">
+            <h1>Cadastro de Livro</h1>
+            <form ref="formRef" @submit="submitForm">
+                <div class="form-group">
+                    <div class="lab-input">
+                        <label for="titulo">Título</label>
+                        <input type="text" id="titulo" name="titulo" required />
+                    </div>
 
-                <div class="lab-input">
-                    <label for="titulo">Título</label>
-                    <input type="text" id="titulo" name="titulo" required>
-                </div>
+                    <div class="lab-input">
+                        <label for="isbn">ISBN</label>
+                        <input type="text" id="isbn" name="isbn" required />
+                    </div>
 
-                <div class="lab-input">
-                    <label for="isbn">ISBN</label>
-                    <input type="text" id="isbn" name="isbn" required>
+                    <div class="lab-input">
+                        <label for="genero">Gênero</label>
+                        <input type="text" id="genero" name="genero" required />
+                    </div>
                 </div>
+                <div class="form-group">
+                    <div class="lab-input">
+                        <label for="imagem">Imagem do Livro</label>
+                        <input type="file" id="imagem" name="image" accept="image/*" required />
+                    </div>
 
-                <div class="lab-input">
-                    <label for="genero">Gênero</label>
-                    <input type="text" id="genero" name="genero" required>
-                </div>
-            </div>
-            <div class="form-group">
+                    <div class="lab-input">
+                        <label for="autor">Autor</label>
+                        <input type="text" id="autor" name="autor" required />
+                    </div>
 
-                <div class="lab-input">
-                    <label for="imagem">Imagem do Livro</label>
-                    <input type="file" id="imagem" name="imagem" accept="image/*" required>
+                    <div class="lab-input">
+                        <label for="ano">Ano de Publicação</label>
+                        <input type="number" id="ano" name="ano" min="1000" max="9999" required />
+                    </div>
                 </div>
+                <div class="form-group1">
+                    <div class="lab-input">
+                        <label for="descricao">Descrição</label>
+                        <textarea id="descricao" name="descricao" required></textarea>
+                    </div>
 
-                <div class="lab-input">
-                    <label for="autor">Autor</label>
-                    <input type="text" id="autor" name="autor" required>
+                    <button type="submit">Confirmar</button>
                 </div>
-
-                <div class="lab-input">
-                    <label for="ano">Ano de Publicação</label>
-                    <input type="number" id="ano" name="ano" min="1000" max="9999" required>
-                </div>
-
-            </div>
-            <div class="form-group1">
-                <div class="lab-input">
-                    <label for="descricao">Descrição</label>
-                    <textarea id="descricao" name="descricao" required></textarea>
-                </div>
-                
-                <button type="submit">Confirmar</button>
-            </div>
-        </form>
-    </div>
+            </form>
+        </div>
     </DefaultLayout>
 </template>
+
 
 <style scoped>
 .form-container {
