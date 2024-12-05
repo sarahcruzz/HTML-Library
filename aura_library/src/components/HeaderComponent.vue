@@ -1,6 +1,32 @@
 <script>
+import axios from "axios";
 
+export default {
+  data() {
+    return {
+      searchQuery: "", // Texto digitado na barra de pesquisa
+      searchResults: [], // Resultados retornados pela API
+    };
+  },
+  methods: {
+    async handleSearch() {
+      try {
+        const response = await axios.get("http://localhost:3000/api/books/search", {
+          params: { query: this.searchQuery },
+        });
+        this.searchResults = response.data;
+
+        // Redireciona para uma página de resultados ou exibe diretamente
+          // 
+        console.log('funciona')
+      } catch (error) {
+        console.error("Erro ao buscar livros:", error);
+      }
+    },
+  },
+};
 </script>
+
 
 <template>
     <header>
@@ -17,7 +43,13 @@
 
             <div class="conjunto2">              
                 <div class="barra-pesquisa">
-                    <input type="search" class="pesquisa" placeholder="O que está procurando hoje?">
+                    <input
+                        type="search"
+                        class="pesquisa"
+                        placeholder="O que está procurando hoje?"
+                        v-model="searchQuery"
+                        @keyup.enter="handleSearch"
+                    />
                 </div>
     
                 <div class="icones">

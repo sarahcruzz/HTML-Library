@@ -10,6 +10,7 @@ import GerenciarBibliotecaView from '@/views/GerenciarBibliotecaView.vue'
 import GerenciarLivrosView from '@/views/GerenciarLivrosView.vue'
 import CadastrarLivroView from '@/views/CadastrarLivroView.vue'
 import StatusEmprestimoView from '@/views/StatusEmprestimoView.vue'
+import SearchResultsView from '@/views/SearchResultsView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -61,6 +62,12 @@ const router = createRouter({
       name: 'ver status emprestimo ',
       component: StatusEmprestimoView
     },
+    {
+      path: '/pesquisa',
+      name: 'rota de pesquisa',
+      component: SearchResultsView
+    },
+
 
   
     
