@@ -53,7 +53,7 @@ export default {
                 </div>
     
                 <div class="icones">
-                    <RouterLink to=""><i class="pi pi-shopping-bag"></i></RouterLink>
+                    <RouterLink to="/emprestimo"><i class="pi pi-shopping-bag"></i></RouterLink>
                     <RouterLink to="/login"><i class="pi pi-user"></i></RouterLink>
                 </div>
             </div>
