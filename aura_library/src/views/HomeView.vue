@@ -122,6 +122,12 @@ main {
   gap: 15px;
 }
 
+.conj-livro a{
+  text-decoration: none;
+  color: #000;
+}
+
+
 #genero {
   padding: 10px;
 }

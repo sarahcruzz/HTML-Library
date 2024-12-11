@@ -5,37 +5,27 @@ import DefaultLayout from '@/layouts/DefaultLayout.vue';
 
 <template>
     <DefaultLayout>
-        <div class="user-livro">
-            <RouterLink to="/gerenciarBiblioteca">Gerenciar Usuários</RouterLink>
-            <RouterLink to="/gerenciarLivros">Gerenciar Livros</RouterLink>
-        </div>
-
         <div class="tabela">
             <table>
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>Imagem</th>
                         <th>Título</th>
                         <th>ISBN</th>
                         <th>Autor</th>
                         <th>Gênero</th>
                         <th>Ano</th>
-                        <th>Ação</th>
                     </tr>
                 </thead>
                 <tbody>
                     <!-- Renderizando os livros -->
                     <tr v-for="livro in livros" :key="livro._id">
-                        <td>{{ livro._id }}</td>
+                        <td>{{ livro.imagem }}</td>
                         <td>{{ livro.titulo }}</td>
                         <td>{{ livro.isbn }}</td>
                         <td>{{ livro.autor }}</td>
                         <td>{{ livro.genero }}</td>
                         <td>{{ livro.ano }}</td>
-                        <td>
-                            <button @click="excluirLivro(livro._id)">Excluir</button>
-                            <button @click="atualizarLivro(livro._id)">Editar</button>
-                        </td>
                     </tr>
                 </tbody>
             </table>
