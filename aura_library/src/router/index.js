@@ -64,16 +64,15 @@ const router = createRouter({
       component: StatusEmprestimoView
     },
     {
-      path: '/pesquisa',
-      name: 'rota de pesquisa',
-      component: SearchResultsView
-    },
-    {
       path: '/emprestimo',
       name: 'ver emprestimos do usuário',
       component: VerEmprestimoView
     },
-
+    {
+      path: '/search-results',
+      name: 'SearchResults',
+      component: SearchResultsView,
+    },
 
 
   

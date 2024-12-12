@@ -1,36 +1,31 @@
 <template>
   <div>
     <h1>Resultados da Pesquisa</h1>
-    <ul v-if="results.length">
-      <li v-for="book in results" :key="book._id">
-        <h3>{{ book.titulo }}</h3>
-        <p><strong>Autor:</strong> {{ book.autor }}</p>
-        <p><strong>Gênero:</strong> {{ book.genero }}</p>
+    <ul>
+      <li v-for="book in results" :key="book.id">
+        <h2>{{ book.title }}</h2>
+        <p>Autor: {{ book.author }}</p>
+        <p>Descrição: {{ book.description }}</p>
       </li>
     </ul>
-    <p v-else>Nenhum resultado encontrado para "{{ $route.query.q }}"</p>
   </div>
 </template>
 
 <script>
-import axios from "axios";
-
 export default {
   data() {
     return {
-      results: [],
+      results: [], // Armazena os resultados da pesquisa
     };
   },
-  async created() {
-    const query = this.$route.query.q || "";
-    try {
-      const response = await axios.get("http://localhost:3000/api/books/search", {
-        params: { query },
-      });
-      this.results = response.data;
-    } catch (error) {
-      console.error("Erro ao buscar livros:", error);
-    }
+  created() {
+    // Obtém os resultados da pesquisa passados via state
+    this.results = this.$route.state.results || [];
+    console.log('Resultados recebidos:', this.results); // Para verificar os dados recebidos
   },
 };
 </script>
+
+<style>
+/* Adicione estilos conforme necessário */
+</style>

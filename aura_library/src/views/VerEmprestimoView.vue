@@ -1,93 +1,47 @@
 <script setup>
+import { ref, onMounted } from 'vue';
+import axios from 'axios';
 import DefaultLayout from '@/layouts/DefaultLayout.vue';
 
+const activeLoans = ref([]);
+
+const fetchLoans = async () => {
+  try {
+    const response = await axios.get('http://localhost:3000/api/loans/active');
+    activeLoans.value = response.data;
+  } catch (error) {
+    console.error('Erro ao buscar empréstimos:', error);
+  }
+};
+
+onMounted(fetchLoans);
 </script>
 
 <template>
     <DefaultLayout>
-        <div class="tabela">
+        <div>
+            <h1>Empréstimos Ativos</h1>
             <table>
-                <thead>
-                    <tr>
-                        <th>Imagem</th>
-                        <th>Título</th>
-                        <th>ISBN</th>
-                        <th>Autor</th>
-                        <th>Gênero</th>
-                        <th>Ano</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Renderizando os livros -->
-                    <tr v-for="livro in livros" :key="livro._id">
-                        <td>{{ livro.imagem }}</td>
-                        <td>{{ livro.titulo }}</td>
-                        <td>{{ livro.isbn }}</td>
-                        <td>{{ livro.autor }}</td>
-                        <td>{{ livro.genero }}</td>
-                        <td>{{ livro.ano }}</td>
-                    </tr>
-                </tbody>
+            <thead>
+                <tr>
+                <th>Livro</th>
+                <th>Usuário</th>
+                <th>Data de Empréstimo</th>
+                <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="loan in activeLoans" :key="loan._id">
+                <td>{{ loan.bookId.title }}</td>
+                <td>{{ loan.userId.username }}</td>
+                <td>{{ new Date(loan.loanDate).toLocaleDateString() }}</td>
+                <td>
+                    <button @click="returnBook(loan._id)">Devolver</button>
+                </td>
+                </tr>
+            </tbody>
             </table>
         </div>
     </DefaultLayout>
+        
 </template>
-
-<style>
-/* O estilo permanece igual */
-.btn-atv-dtv {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-.tabela {
-    display: flex;
-    justify-content: center;
-}
-
-table {
-    width: 80%;
-    border-collapse: collapse;
-}
-
-table,
-th,
-td {
-    border: 1px solid #ddd;
-}
-
-
-.user-livro {
-    display: flex;
-    justify-content: space-around;
-}
-
-.user-livro a {
-    text-decoration: none;
-    color: #000;
-}
-
-.user-livro a.router-link-exact-active {
-    border-bottom: 2px solid #c6d4e1;
-    color: rgb(0, 0, 0);
-    font-weight: bold;
-}
-
-.btn-add-livro {
-    margin-top: 50px;
-    display: flex;
-    justify-content: center;
-}
-
-.btn-add-livro button {
-    border-radius: 50px;
-    border: none;
-    width: 200px;
-    height: 40px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #4AA0EF;
-    cursor: pointer;
-}
-</style>

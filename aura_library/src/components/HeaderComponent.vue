@@ -12,17 +12,23 @@ export default {
     async handleSearch() {
       try {
         const response = await axios.get("http://localhost:3000/api/books/search", {
-          params: { query: this.searchQuery },
+          params: { titulo: this.searchQuery },
         });
-        this.searchResults = response.data;
 
-        // Redireciona para uma página de resultados ou exibe diretamente
-          // 
-        console.log('funciona')
+        // Redireciona para a página de resultados com os dados usando state
+        this.$router.push({ 
+          name: 'SearchResults', 
+          state: { results: response.data } // Passando os resultados via state
+        });
+        
+        console.log('funciona');
       } catch (error) {
         console.error("Erro ao buscar livros:", error);
       }
-    },
+    }
+
+
+
   },
 };
 </script>

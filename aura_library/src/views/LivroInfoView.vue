@@ -5,6 +5,7 @@ import { useRoute } from 'vue-router';
 import DefaultLayout from '@/layouts/DefaultLayout.vue';
 
 const livro = ref(null);
+const loanStatus = ref('');
 const route = useRoute();
 const livroId = route.params.id;
 
@@ -17,44 +18,72 @@ const fetchLivro = async () => {
   }
 };
 
+const emprestarLivro = async () => {
+  try {
+    const token = localStorage.getItem('token'); // Pegue o token do localStorage
+    if (!token) {
+      alert('Você precisa estar logado para realizar esta ação.');
+      return;
+    }
+
+    const response = await axios.post(
+      `http://localhost:3000/api/loans/create`,
+      { bookId: livroId }, 
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    loanStatus.value = 'Livro emprestado com sucesso!';
+    alert(loanStatus.value);
+  } catch (error) {
+    console.error('Erro ao emprestar o livro:', error);
+    loanStatus.value = error.response?.data?.error || 'Erro ao emprestar o livro. Tente novamente.';
+    alert(loanStatus.value);
+  }
+};
+
 onMounted(() => {
   fetchLivro();
 });
 </script>
 
 <template>
-    <DefaultLayout>
-        <div class="conj-livro-unico">
-            <!-- A URL da imagem é dinâmica agora -->
-            <img :src="livro?.imagem ? `http://localhost:3000/${livro.imagem}` : ''" alt="Imagem do livro" v-if="livro?.imagem" />
+  <DefaultLayout>
+    <div class="conj-livro-unico">
+      <img :src="livro?.imagem ? `http://localhost:3000/${livro.imagem}` : ''" alt="Imagem do livro" v-if="livro?.imagem" />
 
-            <div class="info-livro">
-                <h1>{{ livro?.titulo }}</h1>
+      <div class="info-livro">
+        <h1>{{ livro?.titulo }}</h1>
 
-                <span class="genero-estrelas">
-                    <p>Gênero: {{ livro?.genero }}</p>
-                    <span class="estrelinhas">
-                        <i class="pi pi-star" v-for="n in 5" :key="n" />
-                    </span>
-                </span>
+        <span class="genero-estrelas">
+          <p>Gênero: {{ livro?.genero }}</p>
+          <span class="estrelinhas">
+            <i class="pi pi-star" v-for="n in 5" :key="n" />
+          </span>
+        </span>
 
-                <span class="info-detalhada">
-                    <p>ISBN: {{ livro?.isbn }}</p>
-                    <p>Publicado em: {{ livro?.ano }}</p>
-                    <p>Autor: {{ livro?.autor }}</p>
-                </span>
+        <span class="info-detalhada">
+          <p>ISBN: {{ livro?.isbn }}</p>
+          <p>Publicado em: {{ livro?.ano }}</p>
+          <p>Autor: {{ livro?.autor }}</p>
+        </span>
 
-                <span class="descricao-livro">
-                    <h3>Descrição</h3>
-                    <p>{{ livro?.descricao }}</p>
-                </span>
+        <span class="descricao-livro">
+          <h3>Descrição</h3>
+          <p>{{ livro?.descricao }}</p>
+        </span>
 
-                <div class="emprestar">
-                    <button type="submit">Emprestar</button>
-                </div>
-            </div>
+        <div class="emprestar">
+          <button type="button" @click="emprestarLivro">Emprestar</button>
         </div>
-    </DefaultLayout>
+
+        <p v-if="loanStatus" class="loan-status">{{ loanStatus }}</p>
+      </div>
+    </div>
+  </DefaultLayout>
 </template>
 
 <style scoped>
@@ -109,5 +138,11 @@ onMounted(() => {
     margin-top: 40px;
     display: flex;
     justify-content: end;
+}
+
+.loan-status {
+    margin-top: 10px;
+    font-weight: bold;
+    color: green;
 }
 </style>

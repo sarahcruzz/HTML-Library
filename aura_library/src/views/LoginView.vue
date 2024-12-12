@@ -90,7 +90,7 @@ const handleLogin = async () => {
 </template>
 
 <style>
-/* Estilos mantidos como no exemplo anterior */
+
 section {
     display: flex;
     width: 100%;

@@ -52,18 +52,42 @@ onMounted(() => {
                     <tr>
                         <th>ID</th>
                         <th>Nome</th>
+                        <th>Status</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="user in users" :key="user._id">
                         <td>{{ user._id }}</td>
                         <td>{{ user.username }}</td>
+                        <td>{{ user.active ? 'Ativo' : 'Inativo' }}</td>
+                        <td class="btn-atv-dtv">
+                            <button
+                                v-if="!user.active"
+                                class="button-activate"
+                                @click="toggleUserStatus(user._id, 'activate')"
+                            >
+                                Ativar
+                            </button>
+                            <button
+                                v-if="user.active"
+                                class="button-deactivate"
+                                @click="toggleUserStatus(user._id, 'deactivate')"
+                            >
+                                Desativar
+                            </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </DefaultLayout>
 </template>
+
+<style>
+/* O mesmo estilo do exemplo anterior, mantido */
+</style>
+
 
 <style>
 .btn-atv-dtv {
