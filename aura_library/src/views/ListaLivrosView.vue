@@ -101,4 +101,6 @@ const navegarParaLivro = (id) => {
 main{
     padding: 50px;
 }
+
+
 </style>

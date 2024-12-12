@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue';
 import PieChart from '@/components/PieChart.vue';
 import BarChart from '@/components/BarChart.vue';
 import axios from 'axios';
+import DefaultLayout from '@/layouts/DefaultLayout.vue';
 
 const userData = ref({
   totalUsers: 0,
@@ -32,49 +33,51 @@ onMounted(fetchDashboardData);
 </script>
 
 <template>
-  <div>
-    <h1>Dashboard de Status</h1>
+  <DefaultLayout>
+    <div>
+      <h1>Dashboard de Status</h1>
 
-    <section>
-      <h2>Usuários</h2>
-      <PieChart
-        :chart-data="{
-          labels: ['Ativos', 'Inativos'],
-          datasets: [
-            {
-              data: [userData.activeUsers, userData.inactiveUsers],
-              backgroundColor: ['#4caf50', '#f44336'],
-            },
-          ],
-        }"
-      />
-    </section>
+      <section>
+        <h2>Usuários</h2>
+        <PieChart
+          :chart-data="{
+            labels: ['Ativos', 'Inativos'],
+            datasets: [
+              {
+                data: [userData.activeUsers, userData.inactiveUsers],
+                backgroundColor: ['#4caf50', '#f44336'],
+              },
+            ],
+          }"
+        />
+      </section>
 
-    <section>
-      <h2>Livros</h2>
-      <BarChart
-        :chart-data="{
-          labels: ['Emprestados', 'Disponíveis'],
-          datasets: [
-            {
-              label: 'Livros',
-              data: [bookData.booksBorrowed, bookData.booksAvailable],
-              backgroundColor: ['#2196f3', '#ffc107'],
+      <section>
+        <h2>Livros</h2>
+        <BarChart
+          :chart-data="{
+            labels: ['Emprestados', 'Disponíveis'],
+            datasets: [
+              {
+                label: 'Livros',
+                data: [bookData.booksBorrowed, bookData.booksAvailable],
+                backgroundColor: ['#2196f3', '#ffc107'],
+              },
+            ],
+          }"
+          :chart-options="{
+            responsive: true,
+            plugins: {
+              legend: {
+                display: true,
+                position: 'top',
+              },
             },
-          ],
-        }"
-        :chart-options="{
-          responsive: true,
-          plugins: {
-            legend: {
-              display: true,
-              position: 'top',
-            },
-          },
-        }"
-      />
-    </section>
-  </div>
+          }"
+        />
+      </section>
+    </div>
+  </DefaultLayout>
 </template>
 
 <style>

@@ -20,15 +20,15 @@ const fetchLivro = async () => {
 
 const emprestarLivro = async () => {
   try {
-    const token = localStorage.getItem('token'); // Pegue o token do localStorage
+    const token = localStorage.getItem('token');
     if (!token) {
       alert('Você precisa estar logado para realizar esta ação.');
       return;
     }
 
     const response = await axios.post(
-      `http://localhost:3000/api/loans/create`,
-      { bookId: livroId }, 
+      `http://localhost:3000/api/books/${livroId}/loan`,
+      {},
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -36,7 +36,8 @@ const emprestarLivro = async () => {
       }
     );
 
-    loanStatus.value = 'Livro emprestado com sucesso!';
+    livro.value.status = 'Emprestado';
+    loanStatus.value = response.data.message;
     alert(loanStatus.value);
   } catch (error) {
     console.error('Erro ao emprestar o livro:', error);
@@ -44,6 +45,7 @@ const emprestarLivro = async () => {
     alert(loanStatus.value);
   }
 };
+
 
 onMounted(() => {
   fetchLivro();
@@ -76,18 +78,35 @@ onMounted(() => {
           <p>{{ livro?.descricao }}</p>
         </span>
 
-        <div class="emprestar">
+        <div class="emprestar" v-if="livro?.status === 'Disponível'">
           <button type="button" @click="emprestarLivro">Emprestar</button>
-        </div>
-
-        <p v-if="loanStatus" class="loan-status">{{ loanStatus }}</p>
       </div>
+      <p v-else class="unavailable-status">Este livro já está emprestado.</p>
+
+      </div>
+
+      <span class="info-detalhada">
+        <p>ISBN: {{ livro?.isbn }}</p>
+        <p>Publicado em: {{ livro?.ano }}</p>
+        <p>Autor: {{ livro?.autor }}</p>
+        <p>Status: <strong>{{ livro?.status }}</strong></p>
+      </span>
+
+
     </div>
   </DefaultLayout>
 </template>
 
 <style scoped>
-/* Estilos existentes */
+
+.info-detalhada strong {
+  color: green;
+}
+
+.info-detalhada strong:contains('Emprestado') {
+  color: red;
+}
+
 .info-livro {
     width: 50%;
 }
